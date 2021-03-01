@@ -1,0 +1,37 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("../../Images/home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    background: rgb(12, 12, 12);
+}
+
+.outer{
+    align-items: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Montserrat';
+    font-size: 1.3em;
+    color: cornsilk;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+img{
+    margin: 0.2em 0.5em 1em 0.5em;
+}
+
+a{
+    color: cornsilk;
+    text-decoration: none;
+}
