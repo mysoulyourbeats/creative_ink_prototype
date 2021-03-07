@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/user.js'
-import Prose from '../models/prose.js'
 
 export const signin = async(req, res) => {
     const { email, password } = req.body
@@ -48,35 +47,5 @@ export const signup = async(req, res) => {
 }
 
 export const clearcookies = (req, res) => {
- 
     res.clearCookie('token').status(200).send()
-}
-
-export const postprose = async(req, res) => {
-    const { title, prose, id } = req.body
-    
-    try {
-        await Prose.create({ title: title, prose: prose, id: id })        
-        return res.status(200).send()
-    } catch (error) {
-        console.log(error)
-        return res.status(500).send()
-    }
-}
-
-export const getprose = async(req, res) => {
-
-    const { id }  = req.body
-  
-    try {
-        const result   = await Prose.find({ id })
-        if(!result)
-            return res.status(404).send()
-               
-        return res.status(200).json({ result })        
-    } catch (error) {
-        console.log(error)
-        return res.status(500).send()
-    }
- 
 }
