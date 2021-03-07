@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../Context'
 
@@ -18,18 +18,16 @@ const NavBar = () => {
     }, [isAuth])
 
     window.addEventListener('storage', (event) => {
-        console.log("IT IS HAPPENING")
+        // console.log("IT IS HAPPENING")
         if (event.key === 'isAuth') { 
-            // window.location.reload()
+            window.location.reload()
         }
     })
     
     const clickHandler = () => {
         localStorage.clear()
         setIsAuth(false)
-        axios.get(`${url}/clearcookies`, {
-            withCredentials: true
-        })
+        axios.get(`${url}/clearcookies`, {withCredentials: true})
     }
 
     return(
@@ -41,11 +39,11 @@ const NavBar = () => {
                     <div>Creative.Inc</div>
                 </div>
             </Link>               
-                <div>API</div>
+                <Link to="/prompts"><div>Prompts</div></Link>
                 <div>Hall of Ink</div>
-                <Link to="/myworks"><div>My works</div></Link>
+                { (isAuth)? <Link to="/drafts"><div>Drafts</div></Link> : null }
                 <div>Pen Fight</div>
-                { (!isAuth || !localStorage.getItem('isAuth'))? <Link to="/signup"><div>Sign Up</div> </Link> : <Link to="/" onClick={clickHandler}>Log Out</Link>}
+                { (!isAuth)? <Link to="/signup"><div>Sign Up</div> </Link> : <Link to="/" onClick={clickHandler}>Log Out</Link> }
             </div>
         </nav>
 

@@ -11,4 +11,3 @@ export const StateProvider = (props) => {
         </Context.Provider>
     )
 }
-

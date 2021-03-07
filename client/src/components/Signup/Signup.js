@@ -1,5 +1,5 @@
 import { React, useState, useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import { Container, Grid, Button, Typography, Paper } from '@material-ui/core'
 import Input from './Input'
@@ -19,7 +19,7 @@ const Signup = () => {
     const initialSigninState = { email: '', password: ''}
     const [formData, setFormData] = useState(isSignup ? initialSignupState : initialSigninState)
     const [failedAuth, setFailedAuth] = useState('')
-
+    // eslint-disable-next-line
     const [isAuth, setIsAuth] = useContext(Context)
 
     const history = useHistory()
@@ -62,6 +62,7 @@ const Signup = () => {
     return(
         
         <>  
+            {console.log('rerendered')}
             <Container component="main" maxWidth="xs">
                 <Paper className={classes.paper} elevation={4}>              
                     <Typography variant="h5" align="center">{isSignup ? 'Sign Up' : 'Log In'}</Typography>                

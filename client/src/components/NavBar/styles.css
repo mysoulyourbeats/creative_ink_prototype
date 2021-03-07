@@ -1,13 +1,17 @@
+html{
+    background: url("../../Images/497165.jpg") center center fixed;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(39, 37, 37, 0.53);
+}
+
 body{
     margin: 0;
     padding: 0;
-    background-image: url("../../Images/home.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
 }
-
 .navbar{
-    background: rgb(12, 12, 12);
+    background: rgb(44, 48, 62)
 }
 
 .outer{
@@ -18,7 +22,7 @@ body{
     justify-content: space-between;
     font-family: 'Montserrat';
     font-size: 1.3em;
-    color: cornsilk;
+    color: rgb(211, 202, 202);
 }
 
 .logo{
@@ -27,11 +31,11 @@ body{
     align-items: center;
 }
 
-img{
+.logo img{
     margin: 0.2em 0.5em 1em 0.5em;
 }
 
 a{
-    color: cornsilk;
+    color:  rgb(211, 202, 202);
     text-decoration: none;
 }

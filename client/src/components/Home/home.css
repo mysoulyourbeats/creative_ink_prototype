@@ -1,0 +1,76 @@
+.first-page-wrapper{
+    color: white;
+    font-family: 'Montserrat';
+}
+
+.welcome{
+    /* background-color: rgba(39, 37, 37, 0.53); */
+    text-align: center;
+    padding-top: 7vw;
+}
+
+.title {
+    padding: 0;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 8vw;    
+    margin: 0 auto;
+}
+
+.specs{        
+    font-size: 1.3vw;
+}
+
+.first-page-wrapper button{
+    text-transform: none;
+    margin-top: 5vw;
+    margin-bottom: 12vw;    
+    color: white;  
+    font-family: 'Montserrat';
+    border-color: white;    
+}
+.first-page-wrapper button:hover{
+    transition-delay: 40ms;
+    color: rgb(0, 0, 0);
+    background-color: white;
+}
+
+.para-styler{    
+    /* background: url('../../Images/book.jpg') center center fixed no-repeat; EPIC EFFECT */
+    /* padding-bottom: 20vw; */
+    padding-top: 13vw;
+    text-align: center;
+}
+
+.para-styler h2 {
+    margin: 0;
+    font-size: 5vw;
+    padding-left: 4vw;
+}
+
+.para-styler p {
+    margin-top: 6vw;
+    padding-left: 4vw;
+    font-size: 1.7vw;
+    font-weight: 300;
+}
+
+.prompt {
+    background: url('../../Images/book.jpg') center  no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover; 
+    background-color: rgba(0, 0, 0, 0.523);    
+}
+
+.weave {
+    background: url("../../Images/aaron-burden-y02jEX_B0O0-unsplash\ \(1\).jpg") center  no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover; 
+    background-color: rgba(0, 0, 0, 0.523);   
+}
+
+.drafts {
+    background: url("../../Images/green-chameleon-s9CC2SKySJM-unsplash.jpg") center  no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover; 
+    background-color: rgba(0, 0, 0, 0.523);   
+}
