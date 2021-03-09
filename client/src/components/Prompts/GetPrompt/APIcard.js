@@ -1,12 +1,18 @@
 import React from 'react'
 import ProgressiveImage from "react-progressive-graceful-image"
-import { Typography } from '@material-ui/core'
 import './prompts.css'
 
 const PromptCard = ({fullLink, thumbLink, text }) => {
+    let title
+    if(text !== ''){
+        title = text.split(' ').slice(0,4).join(' ')
+        console.log(title)
+        console.log(title.length)
+    }
+
     return(
-        <div className="prompt-card-wrapper">
-            {  text === '' ?
+        <div className="api-card-wrapper">
+            {  text === '' && fullLink !== ''?
                 <div>
                      <ProgressiveImage                  
                         src={fullLink}
@@ -16,11 +22,22 @@ const PromptCard = ({fullLink, thumbLink, text }) => {
                     </ProgressiveImage>
                 </div>
 
-                :
-                <Typography>
-                    {text}
-                </Typography>
+                :   (
+                        text !== ''?
+                            <div className="reddit-prompt-wrapper">             
+                                <h1>{title}</h1>
+                                <p>{text.substring(title.length+1)}</p>
+                            </div>  
+
+                            :     
+                                <div className="reddit-prompt-wrapper">             
+                                    <h1>Click Prompt Button</h1>
+                                    <p>Pick your poison - image or a written piece. Each with its own beauty. Generate intriguing and exciting prompts!</p>
+                              </div>  
+                   ) 
+                   
             }
+            
         </div>
     )
 }

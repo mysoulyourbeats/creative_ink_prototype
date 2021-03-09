@@ -7,7 +7,7 @@ const Home = () => {
        <div className="first-page-wrapper">
             <div className="welcome">
                <p className="title">Creative.Inc</p>
-               <p className="specs">Write  |  Share  |  Collaborate</p>
+               <p className="specs">Write | Share | Collaborate</p>
                <Button size="large" variant="outlined">Start Creating</Button>
             </div>
             

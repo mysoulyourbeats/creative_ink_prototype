@@ -42,7 +42,7 @@ const NavBar = () => {
                 <Link to="/prompts"><div>Prompts</div></Link>
                 <div>Hall of Ink</div>
                 { (isAuth)? <Link to="/drafts"><div>Drafts</div></Link> : null }
-                <div>Pen Fight</div>
+                <div>Weave</div>
                 { (!isAuth)? <Link to="/signup"><div>Sign Up</div> </Link> : <Link to="/" onClick={clickHandler}>Log Out</Link> }
             </div>
         </nav>

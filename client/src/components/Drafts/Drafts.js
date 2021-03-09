@@ -44,7 +44,7 @@ const Drafts = () => {
          <Link to="/postprose"><Button color="secondary" variant="contained" /*onClick={changeRoute}*/ >gggggggg</Button></Link> 
 
             { 
-                proseData.map( (val) => (   id!==val.id ?
+                proseData.map((val) => (   id!==val.id ?
                                             <ProseCard key={val.id} id={val.id} title={val.title} prose={val.prose} callback={callback}/>
                                             : null
                                         ) 

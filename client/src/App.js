@@ -8,7 +8,6 @@ import Drafts from './components/Drafts/Drafts'
 import PostProse from './components/PostProse/PostProse'
 import APIcalls from './components/Prompts/GetPrompt/APIcalls'
 import UsedPrompts from './components/Prompts/UsedPrompts/UsedPrompts'
-
 import { StateProvider } from './components/Context'
 
 const App = () => {

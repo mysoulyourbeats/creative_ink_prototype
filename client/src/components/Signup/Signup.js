@@ -83,12 +83,12 @@ const Signup = () => {
                             { isSignup && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/> }                        
                         </Grid>
                         
-                            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                            <Button type="submit" fullWidth variant="contained" color="secondary" className={classes.submit}>
                                 { isSignup ? 'Sign Up' : 'Log In' }
                             </Button>       
     
-                             <Button fullWidth variant="contained" color="secondary" onClick={handleSwitch} className={classes.submit}>
-                                     { isSignup ? 'Log In instead' : 'Or Sign Up' }
+                             <Button fullWidth variant="contained" color="primary" onClick={handleSwitch} className={classes.submit}>
+                                     { isSignup ? 'Or Log In' : 'Or Sign Up' }
                             </Button>         
                     </form>
                 </Paper>

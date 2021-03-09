@@ -1,6 +1,10 @@
-.first-page-wrapper{
+body{
     color: white;
     font-family: 'Montserrat';
+}
+
+.first-page-wrapper .MuiButton-root {
+    font-family: 'Montserrat' !important;
 }
 
 .welcome{
@@ -11,7 +15,8 @@
 
 .title {
     padding: 0;
-    font-family: 'Cherry Swash', cursive;
+    font-family: 'Cherry Swash';
+    font-display: optional;
     font-size: 8vw;    
     margin: 0 auto;
 }
@@ -30,7 +35,7 @@
 }
 .first-page-wrapper button:hover{
     transition-delay: 40ms;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0) !important;
     background-color: white;
 }
 
@@ -58,19 +63,19 @@
     background: url('../../Images/book.jpg') center  no-repeat;
     background-blend-mode: multiply;
     background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.523);    
+    background-color: rgba(0, 0, 0, 0.353);    
 }
 
 .weave {
     background: url("../../Images/aaron-burden-y02jEX_B0O0-unsplash\ \(1\).jpg") center  no-repeat;
     background-blend-mode: multiply;
     background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.523);   
+    background-color: rgba(0, 0, 0, 0.353);     
 }
 
 .drafts {
     background: url("../../Images/green-chameleon-s9CC2SKySJM-unsplash.jpg") center  no-repeat;
     background-blend-mode: multiply;
     background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.523);   
+    background-color: rgba(0, 0, 0, 0.353);     
 }

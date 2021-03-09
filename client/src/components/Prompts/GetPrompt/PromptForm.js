@@ -13,7 +13,7 @@ const PromptForm = ({thumbLink, fullLink, text}) => {
     useEffect(() => {
         setFormData({ title: formData.title, prose: formData.prose, id: localStorage.getItem('userID'), genre: formData.genre,
                       writer: localStorage.getItem('userName'), like: formData.like, born: '', thumbLink, fullLink, text
-                    })
+                    })  
     // eslint-disable-next-line
     }, [text, thumbLink, fullLink])
     
@@ -34,14 +34,14 @@ const PromptForm = ({thumbLink, fullLink, text}) => {
 
     return(
         <>
-            <Container className="prompt-form-react-wrapper" component="main">
+            <Container className="submit-btn" component="main">
                 <Paper className={classes.paper} elevation={4}>              
-                    <div className="prosetitle" variant="h5" align="center">Prose</div>                                    
+                    {/* <div className="prosetitle" variant="h5" align="center">Prose</div>                                     */}
                     <form onSubmit={handleSubmit} className={classes.form}>
-                        <Grid container spacing={3}>                      
-                            <Grid item xs={12} ><TextField value={formData.title} required variant="outlined" fullWidth name="title" label="Title" onChange={handleChange} autoFocus /></Grid>
-                            <Grid item xs={12} ><TextField value={formData.prose} required multiline rows={15} variant="outlined" fullWidth name="prose" label="Prose" onChange={handleChange} /></Grid>           
-                            <Grid item xs={12} ><TextField value={formData.genre} variant="outlined" fullWidth name="title" label="Genres(optional)" onChange={handleChange} autoFocus /></Grid>
+                        <Grid container spacing={2} >                      
+                            <Grid item xs={12} ><TextField value={formData.title} required variant="outlined" fullWidth name="title" label="Title" onChange={handleChange} /></Grid>
+                            <Grid item xs={12} ><TextField value={formData.prose} required multiline rows={15} variant="outlined" fullWidth name="prose" label="Story" onChange={handleChange} /></Grid>           
+                            <Grid item xs={12} ><TextField value={formData.genre} variant="outlined" fullWidth name="genre" label="Genres(use #)" onChange={handleChange} /></Grid>
                         </Grid>
                         
                             <Button type="submit" variant="contained" color="primary" className={classes.submit}>

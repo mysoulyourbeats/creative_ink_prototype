@@ -58,7 +58,7 @@ const PostProse = (props) => {
 
     return(
         <>        
-            <Container component="main" maxWidth="sm">
+            <Container component="main" maxWidth="lg">
                 <Paper className={classes.paper} elevation={4}>              
                     <div className="prosetitle" variant="h5" align="center">Prose</div>                                    
                     <form onSubmit={handleSubmit} className={classes.form}>
