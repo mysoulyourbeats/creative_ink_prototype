@@ -8,6 +8,9 @@ import './styles.css'
 
 const url = "http://localhost:5000"
 const PostProse = (props) => {
+    axios.get('http://localhost:5000/')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
     
     const title = props?.location?.state?.title
     const prose = props?.location?.state?.prose
@@ -45,7 +48,7 @@ const PostProse = (props) => {
             })
             .catch((error) => console.log(error))
         } else {
-            axios.post(`${url}/postprose`, formData)
+            axios.post(`${url}/postprose`, formData, { withCredentials: true })
             .then((res) => {
                     // console.log('successfully submitted')   
                     history.push('/drafts')             
@@ -57,23 +60,21 @@ const PostProse = (props) => {
     }
 
     return(
-        <>        
-            <Container component="main" maxWidth="lg">
-                <Paper className={classes.paper} elevation={4}>              
-                    <div className="prosetitle" variant="h5" align="center">Prose</div>                                    
+        <div className="postprose-wrapper">        
+            <Container component="main" maxWidth="md">
+                <Paper  elevation={4}>              
+                    <div className="prosetitle" variant="h5" align="center">Drafts</div>                                    
                     <form onSubmit={handleSubmit} className={classes.form}>
                         <Grid container spacing={3}>                      
                             <Grid item xs={12} ><TextField value={formData.title} required variant="outlined" fullWidth name="title" label="Title" onChange={handleChange} autoFocus /></Grid>
                             <Grid item xs={12} ><TextField value={formData.prose} required multiline rows={15} variant="outlined" fullWidth name="prose" label="Prose" onChange={handleChange} /></Grid>           
                         </Grid>
                         
-                            <Button type="submit" variant="contained" color="primary" className={classes.submit}>
-                                Submit
-                            </Button>            
+                            <Button type="submit" variant="contained" color="primary" className={classes.submit}>Submit</Button>            
                     </form>
                 </Paper>
             </Container>
-        </>
+        </div>
     )
 }
 

@@ -3,8 +3,9 @@ import Prompt from '../models/prompt.js'
 import mongoose from 'mongoose'
 
 export const postprose = async(req, res) => {
+    console.log(req.userId)
     const { title, prose, id, genre, writer, like, born, thumbLink, fullLink, text } = req.body
-    console.log(text)
+    // console.log(text)
     try {
         if(genre){
             await Prompt.create({ title, prose, id, genre, writer, like, born, thumbLink, fullLink, text })
@@ -64,10 +65,15 @@ export const updateprose = async(req, res) => {
 
 export const deleteprose = async(req, res) => {
     
-    const { id } = req.params
-
+    const { id, type } = req.params
+  
     try {
-        await Prose.findByIdAndDelete(id)
+        if(type === 'prompt'){
+            await Prompt.findByIdAndDelete(id)
+        }
+        else{
+            await Prose.findByIdAndDelete(id)
+        }
         // console.log('deleted that bitch')
         res.status(200).send()
     } catch (error) {

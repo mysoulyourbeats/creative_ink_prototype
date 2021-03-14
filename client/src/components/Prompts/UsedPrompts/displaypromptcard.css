@@ -1,0 +1,111 @@
+.display-prompt-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5em;
+    margin-top: 3em;
+}
+/* #e8e8e5#e8e8e5#e8e8e5#e8e8e5#e8e8e5#e8e8e5 */
+.used-prompts-wrapper{
+    padding-left: 4.3em;  
+    margin-right: 2em;
+}
+
+.used-prompts-wrapper .MuiPaper-rounded {
+    border-radius: 15px !important;
+    width: 23em;
+}
+
+
+.used-written-prompt {
+    background-color:rgb(227, 217, 205);
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.used-prompts-wrapper h2{
+    margin: 0;
+    color: rgb(121, 110, 84);
+    height: 3em;
+    max-height: 3em;
+    padding: 1em;
+    font-size: 3em;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+/* ============================
+           THUMBNAIL
+   ============================
+*/
+.used-thumbnail{
+    width: 23em;
+    height: 15em;
+    max-width: 23em;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.text-meta-data{
+    padding: 1.5em;
+    padding-top: 0;
+}
+
+.used-prompts-wrapper h3{
+    width: 285px;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.used-story {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 3.5em;
+    margin-bottom: 2em;
+}
+
+.used-genres{
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 1em;
+    margin-bottom: 0.85em;
+    color:rgb(224, 157, 113);
+}
+
+/* ============================
+           EDIT OPTIONS
+   ============================
+*/
+.love-and-edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.love-and-edit img{
+    cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.heart{
+    width: 1.65em !important;
+    height: 1.65em !important;
+}
+
+.prompt-like-counter{
+    margin-left: 0.75em;
+    margin-right: 12em;
+}
+
+.prompt-edit-btn{
+    width: 1.65em !important;
+    height: 1.65em !important;
+}
+
+.prompt-trash-btn{
+    margin-left: 2.2em;
+}

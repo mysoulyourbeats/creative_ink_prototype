@@ -12,8 +12,9 @@ const PromptCard = ({fullLink, thumbLink, text }) => {
 
     return(
         <div className="api-card-wrapper">
-            {  text === '' && fullLink !== ''?
-                <div>
+            {   text === '' && fullLink !== ''?
+                
+                <div className="deviant-img-container">
                      <ProgressiveImage                  
                         src={fullLink}
                         placeholder={thumbLink}

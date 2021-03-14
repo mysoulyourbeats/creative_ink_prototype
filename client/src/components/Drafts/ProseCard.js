@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Paper, Button } from '@material-ui/core'
+import { Container, Paper } from '@material-ui/core'
 import axios from 'axios'
 
 import useStyles from '../styles.js'
 import './styles.css'
+import edit from '../../Images/edit.png'
+import trash from '../../Images/delete.png'
+
 const url = 'http://localhost:5000'
 
 const ProseCard = ({ id, title, prose, callback }) => {
     const classes = useStyles()    
 
     const deleteProse = () => {
-        axios.delete(`${url}/${id}/deleteprose`)
+        axios.delete(`${url}/${id}/prose/deleteprose`)
         .then((res) => {
             callback(id)
             console.log('Suxccessfully deleted')
@@ -20,12 +23,12 @@ const ProseCard = ({ id, title, prose, callback }) => {
     }
 
     return(
-        <div>
+        <div className="prose-card-wrapper">
            <Container>
                 <Paper className={classes.paper}>
-                    <div>{title}</div>
-                    <div>{prose}</div>
-                    <div className="Container">
+                    <div className="draft-title"><h3>{title}</h3></div>
+                    <div className="draft-prose">{prose}</div>
+                    <div className="edit-options-div">
                         <Link to = {{
                                 pathname: "/postprose",
                                 state: { 
@@ -33,9 +36,9 @@ const ProseCard = ({ id, title, prose, callback }) => {
                                     prose,
                                     id                           
                                 }}}>
-                                <Button color="primary" variant="contained">Update</Button>
+                                <img className="edit" src={edit} alt="idgafaalt" />
                         </Link>
-                        <Button color="secondary" variant="contained" onClick={deleteProse}>Delete</Button>
+                        <img className="trash" src={trash} alt="idgafaalt" onClick={deleteProse} />
                     </div>
                 </Paper>
            </Container>

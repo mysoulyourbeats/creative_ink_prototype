@@ -2,4 +2,16 @@
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.postprose-wrapper .MuiPaper-root {
+    padding: 1.5em;
+    margin: 5em 1.5em 3em 1.5em;
+}
+
+.postprose-wrapper .MuiButton-root{
+    margin-top: 1em;
+    display: block;
+    margin-left: auto;
 }

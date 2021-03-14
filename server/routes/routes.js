@@ -1,11 +1,11 @@
 import express from 'express'
 import { signup, signin, clearcookies } from '../controller/register.js'
 import { postprose, getprose, updateprose, deleteprose } from '../controller/crud.js'
-// import auth from '../middleware/auth.js'
+import auth from '../middleware/auth.js'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     res.send(req.body)
 })
 
@@ -21,7 +21,7 @@ router.get('/clearcookies', clearcookies)
 // ================
 router.post('/postprose', postprose)
 router.patch('/:id/updateprose', updateprose)
-router.delete('/:id/deleteprose', deleteprose)
+router.delete('/:id/:type/deleteprose', deleteprose)
 router.get('/:id/:type/getprose', getprose)
 
 

@@ -1,5 +1,5 @@
 body{
-    color: white;
+    color: rgb(230, 230, 230);
     font-family: 'Montserrat';
 }
 
@@ -10,25 +10,27 @@ body{
 .welcome{
     /* background-color: rgba(39, 37, 37, 0.53); */
     text-align: center;
-    padding-top: 7vw;
+    padding-top: 12vw;
 }
 
 .title {
     padding: 0;
     font-family: 'Cherry Swash';
     font-display: optional;
-    font-size: 8vw;    
+    font-size: 8em;    
     margin: 0 auto;
+    font-weight: 400;
+
 }
 
 .specs{        
-    font-size: 1.3vw;
+    font-size: 1.5em;
 }
 
 .first-page-wrapper button{
     text-transform: none;
-    margin-top: 5vw;
-    margin-bottom: 12vw;    
+    margin-top: 7vw;
+    margin-bottom: 16vw;    
     color: white;  
     font-family: 'Montserrat';
     border-color: white;    
@@ -42,40 +44,82 @@ body{
 .para-styler{    
     /* background: url('../../Images/book.jpg') center center fixed no-repeat; EPIC EFFECT */
     /* padding-bottom: 20vw; */
-    padding-top: 13vw;
+    padding-top: 20vw;
     text-align: center;
 }
 
 .para-styler h2 {
     margin: 0;
-    font-size: 5vw;
+    font-size: 5em;
     padding-left: 4vw;
 }
 
 .para-styler p {
-    margin-top: 6vw;
+    margin-top: 10vw;
     padding-left: 4vw;
-    font-size: 1.7vw;
+    font-size: 1.725em;
     font-weight: 300;
 }
 
 .prompt {
-    background: url('../../Images/book.jpg') center  no-repeat;
+    background: url('../../Images/book.jpg') center no-repeat;
     background-blend-mode: multiply;
-    background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.353);    
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.421);   
 }
 
 .weave {
     background: url("../../Images/aaron-burden-y02jEX_B0O0-unsplash\ \(1\).jpg") center  no-repeat;
     background-blend-mode: multiply;
     background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.353);     
+    background-color: rgba(0, 0, 0, 0.421);     
 }
 
 .drafts {
     background: url("../../Images/green-chameleon-s9CC2SKySJM-unsplash.jpg") center  no-repeat;
     background-blend-mode: multiply;
     background-size: cover; 
-    background-color: rgba(0, 0, 0, 0.353);     
+    background-color: rgba(0, 0, 0, 0.421);    
+}
+
+@media screen and (max-width: 700px) {
+    .title{
+        font-size: 3em;
+    }
+
+    .specs{
+        font-size: 1em;
+    }
+
+    .para-styler h2{
+        font-size: 1.725em;
+    }
+
+    .para-styler p{
+        font-size: 0.875em;
+    }
+
+}
+
+
+@media screen and (max-width: 370px) {
+    .title{
+        font-size: 3em;
+    }
+
+    .specs{
+        font-size: 0.8em;
+    }
+
+    .para-styler h2{
+        font-size: 1.6em;
+    }
+
+    .para-styler p{
+        font-size: 0.80em;
+    }
+
+    .MuiButton-outlinedSizeLarge {
+        font-size: 0.82em !important;
+    }
 }

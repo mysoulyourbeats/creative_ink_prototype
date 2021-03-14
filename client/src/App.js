@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route } from "react-router-dom"
+import { StateProvider } from './components/Context'
 
 import NavBar from './components/NavBar/NavBar'
 import Signup from './components/Signup/Signup'
@@ -8,7 +9,8 @@ import Drafts from './components/Drafts/Drafts'
 import PostProse from './components/PostProse/PostProse'
 import APIcalls from './components/Prompts/GetPrompt/APIcalls'
 import UsedPrompts from './components/Prompts/UsedPrompts/UsedPrompts'
-import { StateProvider } from './components/Context'
+import Weave from './components/Weave/Weave'
+
 
 const App = () => {
 
@@ -25,6 +27,7 @@ const App = () => {
                 <Route path="/postprose" exact component={PostProse} />
                 <Route path="/prompts" exact component={APIcalls} />
                 <Route path="/usedprompts" exact component={UsedPrompts} />                 
+                <Route path="/weave" exact component={Weave} />                 
             </Router>
         </>
     )

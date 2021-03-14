@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '@material-ui/core'
 import ProseCard from './ProseCard'
 import axios from 'axios'
+
 import './styles.css'
+import plus from '../../Images/plus.png'
 
 const url = "http://localhost:5000"
 
@@ -40,17 +41,17 @@ const Drafts = () => {
 
 
     return(
-        <div className="drafts-container">  
-         <Link to="/postprose"><Button color="secondary" variant="contained" /*onClick={changeRoute}*/ >gggggggg</Button></Link> 
-
-            { 
-                proseData.map((val) => (   id!==val.id ?
-                                            <ProseCard key={val.id} id={val.id} title={val.title} prose={val.prose} callback={callback}/>
-                                            : null
-                                        ) 
-                             ) 
-            }
-        </div>
+            <div className="drafts-container">  
+             <Link to="/postprose"><img src={plus} alt="idgafaalt" className="create-draft-btn" /></Link>
+    
+                { 
+                    proseData.map((val) => (   id!==val.id ?
+                                                <ProseCard key={val.id} id={val.id} title={val.title} prose={val.prose} callback={callback}/>
+                                                : null
+                                            ) 
+                                 ) 
+                }
+            </div>
 
     )
 }

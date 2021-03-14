@@ -16,7 +16,7 @@ const filters = '&with_session=false&mature_content=false'
 const request_token_url = 'https://www.deviantart.com/oauth2/token/?grant_type=client_credentials&client_id=15020&client_secret=2b1357ab8f830d96f443bf8fdfe14577'
 
 
-const Prompts = () => {
+const Prompts = (props) => {
 
     const [text, setText] = useState('')
     const [thumbLink, setThumbLink] = useState('')
@@ -25,10 +25,30 @@ const Prompts = () => {
     const [needToken, setNeedToken] = useState(false)
 
     useEffect(() => {
+        if(props?.location?.state){
+            setText(props.location.state.text)
+            setThumbLink(props.location.state.thumbLink)
+            setFullLink(props.location.state.fullLink)
+        }
+    }, [props.location.state])
+
+    const clearPromptGeneratedTextOrLinkCallback = () => {
+        setText('')
+        setFullLink('')
+    }
+
+    useEffect(() => {        
         if(localStorage.getItem('access_token')){
             setToken(localStorage.getItem('access_token'))
         }
-    }, [])
+
+        const hash = props?.location?.state?.hash       
+        if (hash && document.getElementById(hash)) {
+            document.getElementById(hash).scrollIntoView({behavior: "smooth"})
+        } else {
+            window.scrollTo(0, 0)
+        }
+    }, [props?.location?.state?.hash])
 
     const rand = (x) => Math.floor(Math.random() * (x))
     
@@ -54,8 +74,11 @@ const Prompts = () => {
  
     const picturecall = () => {
         // console.log(token)
-        setText('')
-        setFullLink('filler words man. this is needed :/ ')
+        if(fullLink === '')
+           { setText('Your picture is arriving! Please wait a sec :)')}
+        else{    
+            setText('')
+        }
 
         if(token === ''){
             getToken()
@@ -66,15 +89,16 @@ const Prompts = () => {
             axios.get(`${deviant}?topic=${genre[index]}&offset=${genre[index] === 'digital-art' ? rand(820) : rand(999)}&limit=1&${filters}&access_token=${token}`)
             .then(res => {
                 // console.log(token)
-                
+               
                 console.log(res)
                 console.log(res.data?.results[0]?.category)
                 if(res.data?.results[0]?.category !== 'Visual Art'){
                     // IF it isn't an image, call again
                     picturecall()
                 } else {
+                    setText('')
                     setThumbLink(res.data?.results[0]?.thumbs[1]?.src)
-                    setFullLink(res.data?.results[0]?.preview?.src)
+                    setFullLink(res.data?.results[0]?.preview?.src)                    
                 }
             })
             .catch(error => {
@@ -88,8 +112,9 @@ const Prompts = () => {
     }
 
     const writtencall = () => {
+        setText('Prompt is arriving!       Please wait a sec :)   ')
         axios.get(reddit)
-        .then((res) => {
+        .then((res) => {            
             console.log(res.data[0].data.children[0].data.title.substring(4))
             setText(res.data[0].data.children[0].data.title.substring(4))
         })
@@ -97,25 +122,31 @@ const Prompts = () => {
     }
 
     return(
-        <div>
-            <div className="full-wrapper">
-                <h1 className="prompt-generator-title">Prompt Generator</h1>
+        <div  className="boss">
+            <div className="prompt-page-title-section">
+                <h1 className="prompt-page-title">Prompt Generator</h1>
                 <p>Pick a writing prompt or a picture prompt</p>  
-                <Link to="/usedprompts"><Button size="large" variant="outlined" >Check Prompts Taken</Button></Link>             
+                <Link to="/usedprompts"><Button size="large" variant="outlined">Check Prompts Taken</Button></Link>             
             </div>
 
-                <div className="prompt-wrapper">
-                    
-                        <div className="btn-and-card">
-                                <APIcard thumbLink={thumbLink} fullLink={fullLink} text={text} />
-                                <div className="prompt-button-div">                
-                                    <Button size="large" variant="outlined" onClick={picturecall}>Picture Prompt</Button>
-                                    <Button size="large" variant="outlined" onClick={writtencall}>Written Prompt</Button>                   
-                                </div> 
-                        </div>     
+                    <div className="prompt-wrapper">
+                        
+                            <div className="btn-and-card">
+                                    <APIcard thumbLink={thumbLink} fullLink={fullLink} text={text} />
 
-                        <div><PromptForm thumbLink={thumbLink} fullLink={fullLink} text={text} /></div>
-                </div>
+                                    { props?.location?.state ? 
+
+                                        <div className="prompt-button-div">                                                            
+                                        </div> : 
+                                        <div className="prompt-button-div">                
+                                            <Button size="large" variant="outlined" onClick={picturecall} className="picture-prompt-btn">Picture Prompt</Button>
+                                            <Button size="large" variant="outlined" onClick={writtencall}>Written Prompt</Button>                   
+                                        </div>
+                                    }
+                            </div>     
+    
+                            <div id="box" className="form-ultimatum"><PromptForm title={props?.location?.state?.title} prose={props?.location?.state?.prose} genre={props?.location?.state?.genre} thumbLink={thumbLink} fullLink={fullLink} text={text} clearPromptGeneratedTextOrLinkCallback={clearPromptGeneratedTextOrLinkCallback} /></div>
+                    </div>         
               
         </div>
 
