@@ -124,9 +124,9 @@ const Prompts = (props) => {
     return(
         <div  className="boss">
             <div className="prompt-page-title-section">
-                <h1 className="prompt-page-title">Prompt Generator</h1>
-                <p>Pick a writing prompt or a picture prompt</p>  
-                <Link to="/usedprompts"><Button size="large" variant="outlined">Check Prompts Taken</Button></Link>             
+                <h1 className="prompt-page-title">{props.location.state? 'Update piece' : 'Prompt Generator'}</h1>
+                {props.location.state? null : <p>Pick a writing prompt or a picture prompt</p> }
+                <Link to="/usedprompts"><Button size="large" variant="outlined">See Prompts Taken</Button></Link>             
             </div>
 
                     <div className="prompt-wrapper">
@@ -145,7 +145,13 @@ const Prompts = (props) => {
                                     }
                             </div>     
     
-                            <div id="box" className="form-ultimatum"><PromptForm title={props?.location?.state?.title} prose={props?.location?.state?.prose} genre={props?.location?.state?.genre} thumbLink={thumbLink} fullLink={fullLink} text={text} clearPromptGeneratedTextOrLinkCallback={clearPromptGeneratedTextOrLinkCallback} /></div>
+                            <div id="box" className="form-ultimatum"><PromptForm id={props?.location?.state?.id} title={props?.location?.state?.title} 
+                                                                                 prose={props?.location?.state?.prose} genre={props?.location?.state?.genre}
+                                                                                 like={props?.location?.state?.like} 
+                                                                                 thumbLink={thumbLink} fullLink={fullLink} text={text} 
+                                                                                 clearPromptGeneratedTextOrLinkCallback={clearPromptGeneratedTextOrLinkCallback} 
+                                                                     />
+                            </div>
                     </div>         
               
         </div>

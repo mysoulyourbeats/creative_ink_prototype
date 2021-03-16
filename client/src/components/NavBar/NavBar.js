@@ -62,7 +62,7 @@ const NavBar = () => {
                 </Link>               
                 
                         <Link to="/prompts"><div className="nav-options-large">Prompts</div></Link>
-                        <div className="nav-options-large">Hall of Ink</div>
+                        <Link to="/hall"><div className="nav-options-large">Hall</div></Link>
                         { (isAuth)? <Link to="/drafts"><div className="nav-options-large">Drafts</div></Link> : null }
                         <Link to="/weave"><div className="nav-options-large">Weave</div></Link>
                         { (!isAuth)? <Link to="/signup"><div className="nav-options-large">Sign Up</div> </Link> : <Link to="/" onClick={clickHandler}><div className="nav-options-large">Log Out</div></Link> }
@@ -78,7 +78,7 @@ const NavBar = () => {
                         <div className="nav-options-small">
                             {/* <img alt="idontgiveafuckaboutalt" src={x} onClick={toggleSmallNavOptions} /> */}
                             <Link to="/prompts" onClick={toggleSmallNavOptions}><div className="top-option">Prompts</div></Link>
-                            <div onClick={toggleSmallNavOptions}>Hall of Ink</div>
+                            <Link to="/hall"><div onClick={toggleSmallNavOptions}>Hall</div></Link>
                             { (isAuth)? <Link to="/drafts" onClick={toggleSmallNavOptions}><div>Drafts</div></Link> : null }
                             <Link to="/weave" onClick={toggleSmallNavOptions}><div>Weave</div></Link>
                             { (!isAuth)? <Link to="/signup" onClick={toggleSmallNavOptions}><div>Sign Up</div> </Link> : <Link to="/" onClick={() => {clickHandler(); toggleSmallNavOptions()}}><div>Log Out</div></Link> }

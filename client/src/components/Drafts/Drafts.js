@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from '@material-ui/core'
 import ProseCard from './ProseCard'
 import axios from 'axios'
 
@@ -25,7 +26,7 @@ const Drafts = () => {
         }
 
     useEffect(() => {
-        const id = localStorage.getItem('userID')
+        const id = localStorage.getItem('userId')
 
         axios.get(`${url}/${id}/prose/getprose`)
         .then((res) => {
@@ -44,7 +45,13 @@ const Drafts = () => {
             <div className="drafts-container">  
              <Link to="/postprose"><img src={plus} alt="idgafaalt" className="create-draft-btn" /></Link>
     
-                { 
+                {   
+                    proseData.length === 0 ? 
+                    <div className="oopsie">
+                        <div><h2>No drafts<br/>written yet!</h2></div>
+                        <Link to="/postprose"><Button size="large" variant="outlined" className="oopsie-btn">Take a prompt</Button></Link>
+                    </div>
+                     :     
                     proseData.map((val) => (   id!==val.id ?
                                                 <ProseCard key={val.id} id={val.id} title={val.title} prose={val.prose} callback={callback}/>
                                                 : null

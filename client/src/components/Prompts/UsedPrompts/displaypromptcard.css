@@ -1,3 +1,22 @@
+.oopsie{
+    font-size: 3.5em;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.oopsie-btn{
+    text-transform: none !important;
+    color: white !important;  
+    font-family: 'Montserrat' !important;
+    border-color: white !important;       
+}
+.oopsie-btn:hover{
+    transition-delay: 40ms !important;
+    color: rgb(0, 0, 0) !important;
+    background-color: white !important;
+}
+
 .display-prompt-container{
     display: flex;
     flex-direction: row;
@@ -8,7 +27,7 @@
     margin-bottom: 5em;
     margin-top: 3em;
 }
-/* #e8e8e5#e8e8e5#e8e8e5#e8e8e5#e8e8e5#e8e8e5 */
+
 .used-prompts-wrapper{
     padding-left: 4.3em;  
     margin-right: 2em;
@@ -17,6 +36,7 @@
 .used-prompts-wrapper .MuiPaper-rounded {
     border-radius: 15px !important;
     width: 23em;
+    background-color: #e8e8e5;
 }
 
 
@@ -29,8 +49,8 @@
 .used-prompts-wrapper h2{
     margin: 0;
     color: rgb(121, 110, 84);
-    height: 3em;
-    max-height: 3em;
+    height: 3.78em;
+    max-height: 3.78em;
     padding: 1em;
     font-size: 3em;
     border-top-right-radius: 15px;
@@ -40,9 +60,14 @@
            THUMBNAIL
    ============================
 */
+
+.blur{
+    filter: blur(7px);
+}
+
 .used-thumbnail{
     width: 23em;
-    height: 15em;
+    height: 17em;
     max-width: 23em;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -70,7 +95,7 @@
 .used-genres{
     overflow-wrap: break-word;
     overflow: hidden;
-    height: 1em;
+    height: 1.5em;
     margin-bottom: 0.85em;
     color:rgb(224, 157, 113);
 }
@@ -108,4 +133,32 @@
 
 .prompt-trash-btn{
     margin-left: 2.2em;
+}
+
+
+/* ============================
+           MEDIA QUERIES
+   ============================
+*/
+@media screen and (max-width: 700px){
+    .display-prompt-container{
+        flex-direction: column;
+    }
+
+    .used-prompts-wrapper{
+        padding-left: 1em;
+        margin-right: 1em;
+    }
+    .used-prompts-wrapper .MuiPaper-rounded {
+        width: 20em;
+    }
+
+    .used-thumbnail{
+        width: 20em;
+    }
+
+    .prompt-like-counter{
+        margin-left: 0.75em;
+        margin-right: 8.5em;
+    }
 }

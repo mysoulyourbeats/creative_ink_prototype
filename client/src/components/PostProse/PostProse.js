@@ -17,7 +17,7 @@ const PostProse = (props) => {
     const id =    props?.location?.state?.id
 
     const classes = useStyles()    
-    const [formData, setFormData] = useState({ title: '', prose: '', id: localStorage.getItem('userID') })
+    const [formData, setFormData] = useState({ title: '', prose: '', id: localStorage.getItem('userId') })
     const history = useHistory()
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const PostProse = (props) => {
         }
 
         else
-            setFormData({title: '', prose: '', id: localStorage.getItem('userID')})
+            setFormData({title: '', prose: '', id: localStorage.getItem('userId')})
         
     }, [title, prose, id])
     
@@ -56,7 +56,7 @@ const PostProse = (props) => {
             .catch((error) => console.log(error))
         }
 
-        setFormData({title: '', prose: '', id: localStorage.getItem('userID')})
+        setFormData({title: '', prose: '', id: localStorage.getItem('userId')})
     }
 
     return(

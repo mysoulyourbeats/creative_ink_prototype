@@ -35,7 +35,7 @@ const Signup = () => {
                              
                              localStorage.setItem('isAuth', true)
                              localStorage.setItem('userName', res.data.name)   
-                             localStorage.setItem('userID', res.data.id)         
+                             localStorage.setItem('userId', res.data.id)         
                              setIsAuth(true)
                              history.push('/')                                                                                   
                         }
