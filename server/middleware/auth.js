@@ -1,13 +1,18 @@
 import jwt from 'jsonwebtoken'
 
 const auth = async (req, res, next) => {
-    try {
-        const token = req.cookies['token']
-        console.log('token is', token)
 
-        const decoded = jwt.verify(token, 'secretkey') 
-        req.userId = decoded.id    
-        next()    
+    try {
+        if(req.params?.type === 'hall'){
+            next()
+        } else {
+            const token = req.cookies['token']
+            console.log('token is', token)
+
+            const decoded = jwt.verify(token, 'secretkey') 
+            req.userId = decoded.id    
+            next()    
+        }
 
     } catch (error) {
         console.log(error)

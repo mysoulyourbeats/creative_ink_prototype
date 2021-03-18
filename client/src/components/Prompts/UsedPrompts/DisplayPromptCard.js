@@ -34,15 +34,15 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
     }
 
     const likeIncrDecr = () => {
-        if(canDislike){
-            setLikeCount(prev => prev - 1)
-            setCanDislike(false)
-        } else {
-            setLikeCount(prev => prev + 1)
-            setCanDislike(true)
-        }
-        axios.patch(`${url}/${id}/likestory`, { userId: localStorage.getItem('userId') })
+        axios.patch(`${url}/${id}/likestory`, {}, {withCredentials: true})
         .then(res => {
+            if(canDislike){
+                setLikeCount(prev => prev - 1)
+                setCanDislike(false)
+            } else {
+                setLikeCount(prev => prev + 1)
+                setCanDislike(true)
+            }
             console.log(res.data)
         })
         .catch(error => console.log(error))

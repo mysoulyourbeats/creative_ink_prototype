@@ -4,8 +4,8 @@ const likestory = async(req, res) => {
 
     try {
         const { id } = req.params
-        const  { userId }  = req.body
- 
+        const userId   = req.userId
+
         let result = await Prompt.findOne({_id: id, 'like.likedBy.userId': userId})
        
         if (!result) {

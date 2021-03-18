@@ -23,8 +23,8 @@ router.get('/clearcookies', clearcookies)
 router.post('/postprose', postprose)
 router.patch('/:id/updateprose', updateprose)
 router.delete('/:id/:type/deleteprose', deleteprose)
-router.get('/:id?/:type/getprose', getprose)
-router.patch('/:id/likestory', likestory)
+router.get('/:id?/:type/getprose', auth, getprose)
+router.patch('/:id/likestory', auth, likestory)
 
 
 export default router

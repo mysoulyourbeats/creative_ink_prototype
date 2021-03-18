@@ -4,7 +4,9 @@ import mongoose from 'mongoose'
 
 export const getprose = async(req, res) => {
     
-    const { id, type } = req.params
+    const { type } = req.params
+    const userId = req.userId
+    console.log('userId is', userId)
     let result
     try {
 
@@ -12,20 +14,22 @@ export const getprose = async(req, res) => {
   
             result = await Prompt.find({}, {"id": 0}).sort({ born: -1}).lean() /* i.e., include all columns except the damned ID column*/
             // FOR SETTING isLiked bool to each result object by checking if user has liked a particular post
-            result = await Promise.all(result.map(async(val) => {
-                if(await Prompt.findOne({'like.likedBy.userId': id, '_id': val._id}, '_id')){
+            if(userId){
+                result = await Promise.all(result.map(async(val) => {
+                if(await Prompt.findOne({'like.likedBy.userId': userId, '_id': val._id}, '_id')){
                     val.isLiked = true
                 } else {
                     val.isLiked = false
                 }
                 return val
-            }))
+               }))
+           }
             // console.log('fuck you god', result)
        }
         else if(type === 'prompt'){
-            result = await Prompt.find({ id }).sort({ born: -1}).lean()
+            result = await Prompt.find({ userId }).sort({ born: -1}).lean()
             result = await Promise.all(result.map(async(val) => {
-                if(await Prompt.findOne({'like.likedBy.userId': id, '_id': val._id}, '_id')){
+                if(await Prompt.findOne({'like.likedBy.userId': userId, '_id': val._id}, '_id')){
                     val.isLiked = true
                 } else {
                     val.isLiked = false
@@ -34,7 +38,7 @@ export const getprose = async(req, res) => {
             }))
         }
         else{
-            result = await Prose.find({ id })
+            result = await Prose.find({ userId })
         }
         
         if(result?.length === 0)
