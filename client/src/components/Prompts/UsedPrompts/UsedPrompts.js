@@ -7,7 +7,6 @@ import './displaypromptcard.css'
 
 const UsedPrompts = () => {
     const [promptData, setPromptData] = useState([])
-    // {title: '', prose: '', id: '', genre: [], like: 0, thumbLink: '', fullLink: '', text: '' }  
     
     // eslint-disable-next-line
     const[id, setId] = useState('')
@@ -27,15 +26,14 @@ const UsedPrompts = () => {
         const id = localStorage.getItem('userId')
         axios.get(`http://localhost:5000/${id}/prompt/getprose`)
         .then(res => {
-            // console.log(res.data.result)      
+            console.log(res.data.result)      
             res.data.result.map((val) => (
-                setPromptData((prev) => [...prev, { title: val.title, prose: val.prose, id: val._id, genre: val.genre, like: val.like.count, thumbLink: val.thumbLink, fullLink: val.fullLink, text: val.text }])
+                setPromptData((prev) => [...prev, { title: val.title, prose: val.prose, id: val._id, genre: val.genre, like: val.like.count, 
+                                                    thumbLink: val.thumbLink, fullLink: val.fullLink, text: val.text, isLiked: val.isLiked }])
                             ))     
         })
         .catch(err => console.log(err)) 
     },[])
-
-    console.log(promptData.title)
     
     return(
         <div className="display-prompt-container">
@@ -48,7 +46,9 @@ const UsedPrompts = () => {
                     promptData.map((val) =>  (
                                                 <DisplayPromptCard 
                                                     title={val.title} prose={val.prose} key={val.id} id={val.id} genre={val.genre} like={val.like} 
-                                                    thumbLink={val.thumbLink} fullLink={val.fullLink} text={val.text} callback={callback}
+                                                    thumbLink={val.thumbLink} fullLink={val.fullLink} 
+                                                    text={val.text} callback={callback}
+                                                    isLiked={val.isLiked}
                                                 />                                            
                                             )
                                 )

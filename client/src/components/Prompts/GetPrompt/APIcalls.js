@@ -147,7 +147,6 @@ const Prompts = (props) => {
     
                             <div id="box" className="form-ultimatum"><PromptForm id={props?.location?.state?.id} title={props?.location?.state?.title} 
                                                                                  prose={props?.location?.state?.prose} genre={props?.location?.state?.genre}
-                                                                                 like={props?.location?.state?.like} 
                                                                                  thumbLink={thumbLink} fullLink={fullLink} text={text} 
                                                                                  clearPromptGeneratedTextOrLinkCallback={clearPromptGeneratedTextOrLinkCallback} 
                                                                      />

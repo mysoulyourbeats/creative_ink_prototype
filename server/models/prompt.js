@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const likeSchema = mongoose.Schema({
-    userId: {type: String, default: ''}
+    userId: {type: String}
 })
 
 const promptSchema = mongoose.Schema({
@@ -11,12 +11,13 @@ const promptSchema = mongoose.Schema({
     genre: [String],
     writer: {type: String, required: true},
     like: { type: {
-                    count: {type: Number, default: 0}, 
+                    count: {type: Number}, 
                     likedBy: {type: [likeSchema]}
-                  }
+                  },
+            default: {count: 0, likedBy: []}
           },
     born: {type: Date},
-    thumbLink: {type: String, default: 'pp.boobba'},
+    thumbLink: {type: String, default: 'holyhell'},
     fullLink: String,
     text: String    
 })

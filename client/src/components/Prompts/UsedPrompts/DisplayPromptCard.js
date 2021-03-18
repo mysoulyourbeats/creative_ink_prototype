@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import './displaypromptcard.css'
 import heart from '../../../Images/heart.png'
+import unheart from '../../../Images/unheart.png'
 import edit from '../../../Images/edit.png'
 import trash from '../../../Images/delete.png'
 import useStyles from '../../styles.js'
@@ -14,10 +15,11 @@ import useStyles from '../../styles.js'
 
 const url = "http://localhost:5000"
 
-const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink, text, callback, isHall, writer }) => {
+const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink, text, callback, isHall, writer, isLiked }) => {
     const classes = useStyles()   
     const [likeCount, setLikeCount] = useState(like)
- 
+    const [canDislike, setCanDislike] = useState(isLiked)
+
     const genre_string = (genre[0] === '' ? '' : '#') + (genre.join(' #'))
     
     const prompt = text.split(' ').slice(0,5).join(' ')
@@ -32,15 +34,16 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
     }
 
     const likeIncrDecr = () => {
+        if(canDislike){
+            setLikeCount(prev => prev - 1)
+            setCanDislike(false)
+        } else {
+            setLikeCount(prev => prev + 1)
+            setCanDislike(true)
+        }
         axios.patch(`${url}/${id}/likestory`, { userId: localStorage.getItem('userId') })
         .then(res => {
-            console.log(res)
-            
-            // if(res.data.isIncr){
-            //     setLikeCount(likeCount + 1)
-            // } else {
-            //     setLikeCount(likeCount - 1)
-            // }
+            console.log(res.data)
         })
         .catch(error => console.log(error))
     }
@@ -68,7 +71,9 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
 
                             <div className="love-and-edit">
 
-                                <img src={heart} alt="idgafaalt"className="heart" onClick={likeIncrDecr} />                               
+                                {   canDislike ? <img src={heart} alt="idgafaalt" className="heart" onClick={likeIncrDecr} />                        
+                                               : <img src={unheart} alt="idgafaalt" className="heart" onClick={likeIncrDecr} />
+                                }
                                 <div className="prompt-like-counter">{likeCount}</div>
 
                                 {   !isHall ?

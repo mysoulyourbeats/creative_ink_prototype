@@ -1,6 +1,7 @@
 import express from 'express'
 import { signup, signin, clearcookies } from '../controller/register.js'
-import { postprose, getprose, updateprose, deleteprose, likestory } from '../controller/crud.js'
+import { postprose, getprose, updateprose, deleteprose } from '../controller/crud.js'
+import likestory  from '../controller/like.js'
 import auth from '../middleware/auth.js'
 
 const router = express.Router()

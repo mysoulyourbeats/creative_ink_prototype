@@ -30,22 +30,19 @@ const Signup = () => {
                 axios.post(isSignup ? `${url}/signup` : `${url}/signin`, formData, {
                     withCredentials: true
                 })
-                .then((res) => {
-                        if(res.data.stat === 200){
-                             
+                .then((res) => {                           
                              localStorage.setItem('isAuth', true)
                              localStorage.setItem('userName', res.data.name)   
                              localStorage.setItem('userId', res.data.id)         
                              setIsAuth(true)
                              history.push('/')                                                                                   
-                        }
-                        else{
-                            const display = res.data.message
-                            setFailedAuth(display)
-                            console.log('This is what they call hell')                        
-                        }
                     })
-                .catch((err) => console.log(err))
+                .catch((error) => { 
+                                            // console.log('error is', error.response)
+                                            const display = error.response.data
+                                            setFailedAuth(display)
+                                    
+                                })
     }
 
     const handleChange = (event) => {        

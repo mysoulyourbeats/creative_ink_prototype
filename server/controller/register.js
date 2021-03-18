@@ -9,18 +9,18 @@ export const signin = async(req, res) => {
         const oldUser = await User.findOne({ email })
         
         if(!oldUser)
-             return res.status(200).json({ stat: 404, message: 'User does not exist' })
+             return res.status(404).send('User does not exist')
          
         const isPasswordCorrect = await bcrypt.compare(password, oldUser.password)
           
-        if(!isPasswordCorrect) return res.status(200).json({ stat: 400, message: "Invalid credentials" })
+        if(!isPasswordCorrect) return res.status(400).send('Invalid credentials!')
 
 
         const token = jwt.sign({ id: oldUser._id }, 'secretkey')
-        return res.cookie('token', token, {httpOnly: false, secure: false}).status(200).json({ stat: 200, name: oldUser.name, id: oldUser._id, token })       
+        return res.cookie('token', token, {httpOnly: false, secure: false}).status(200).send({ name: oldUser.name, id: oldUser._id, token })       
 
     } catch (error) {
-        return res.status(200).json({ stat: 404, message: 'Something went wrong.' })        
+        return res.status(500).send('Something went wrong.')        
     }
 }
 
@@ -32,17 +32,17 @@ export const signup = async(req, res) => {
     try {
         const oldUser = await User.findOne({ email })
         
-        if(oldUser) return res.status(200).json({ stat: 400, message: 'User already exists!' })
+        if(oldUser) return res.status(400).send('User already exists!')
         
-        if(password !== confirmPassword) return res.status(200).json({ stat: 400, message: 'Passwords do not match' })
+        if(password !== confirmPassword) return res.status(400).send('Passwords do not match')
         
         const hashedPassword = await bcrypt.hash(password, 12)
         const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`})
         const token = jwt.sign({ id: result._id }, 'secretkey')
 
-        return res.cookie('token', token, {httpOnly: false, secure: false}).status(200).json({ stat: 200, name: `${firstName} ${lastName}`, id: result._id, token})
+        return res.cookie('token', token, {httpOnly: false, secure: false}).status(200).send({ name: `${firstName} ${lastName}`, id: result._id, token})
     } catch (error) {
-        return res.status(200).json({ stat: 500, message: 'Something went wrong.' })        
+        return res.status(500).send('Something went wrong.')        
     }
 }
 

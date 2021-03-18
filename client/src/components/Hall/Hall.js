@@ -7,12 +7,12 @@ const Hall = () => {
     const [promptData, setPromptData] = useState([])
     
     useEffect(() => {
-        axios.get(`${url}/prompt/getprose`)
+        axios.get(`${url}/${localStorage.getItem('userId')}/hall/getprose`)
         .then(res => {
             console.log(res)
             res.data.result.map((val) => (
             setPromptData((prev) => [...prev, { title: val.title, prose: val.prose, id: val._id, genre: val.genre, like: val.like.count, thumbLink: val.thumbLink, fullLink: val.fullLink, text: val.text, 
-                                                writer: val.writer 
+                                                writer: val.writer, isLiked: val.isLiked
                                             }])
                             ))     
         })
@@ -29,6 +29,7 @@ const Hall = () => {
                                                            text={val.text}
                                                            isHall={true}
                                                            writer={val.writer}
+                                                           isLiked={val.isLiked}                                                           
                                         />
                                       )
                             )
