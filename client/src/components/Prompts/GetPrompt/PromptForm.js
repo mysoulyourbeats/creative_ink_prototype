@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import { Container, Grid, Button, Paper, TextField } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
+import Auth from '../../Auth/Auth'
 
 import useStyles from './styles.js'
 import './prompts.css'
@@ -9,13 +10,14 @@ import './prompts.css'
 import axios from 'axios'
 const url = "http://localhost:5000"
 
-const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPromptGeneratedTextOrLinkCallback}) => {
+const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPromptGeneratedTextOrLinkCallback, setIsShowPleaseLogin}) => {
+    
     const classes = useStyles()  
     const history = useHistory()
     let [genre_string, setGenre_String] = useState('')
 
     const [isPromptChosen, setIsPromptChosen] = useState('')
-    const [formData, setFormData] = useState({ title: '', prose: '', id: localStorage.getItem('userId'), genre: [], writer: localStorage.getItem('userName'), born: '', thumbLink: '', fullLink: '', text: '' })
+    const [formData, setFormData] = useState({ title: '', prose: '', genre: [], writer: localStorage.getItem('userName'), born: '', thumbLink: '', fullLink: '', text: '' })    
     
     const handleChange = (event) =>  {
         event.target.name === 'genre' ? setGenre_String(event.target.value)
@@ -30,7 +32,7 @@ const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPr
                                 writer: localStorage.getItem('userName'), born: '', thumbLink, fullLink, text
                                 }) 
         } else {
-                    setFormData({ title: formData.title, prose: formData.prose, id: localStorage.getItem('userId'), genre: formData.genre,
+                    setFormData({ title: formData.title, prose: formData.prose, genre: formData.genre,
                                 writer: localStorage.getItem('userName'), born: '', thumbLink, fullLink, text
                                 })  
                 }
@@ -49,7 +51,7 @@ const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPr
             
         console.log('xxxx', formData.genre)
         if(title){
-            axios.patch(`${url}/${id}/updateprose`, formData)
+            axios.patch(`${url}/${id}/updateprose`, formData, {withCredentials: true})
             .then((res) => {
                 console.log('updated the prompt')
                 setGenre_String('')
@@ -64,11 +66,11 @@ const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPr
             formData.born = moment().format()            
 
             console.log(formData)
-            axios.post('http://localhost:5000/postprose', formData)
+            axios.post('http://localhost:5000/postprose', formData, {withCredentials: true})
             .then( res => console.log(res))
-            .catch( err => console.log(err))   
+            .catch( err => {console.log(err)})   
 
-            setFormData({ title: '', prose: '', id: localStorage.getItem('userId'), genre: [], writer: localStorage.getItem('userName'), born: '' })       
+            setFormData({ title: '', prose: '', genre: [], writer: localStorage.getItem('userName'), born: '' })       
             clearPromptGeneratedTextOrLinkCallback()
             setIsPromptChosen('Submitted! Go to prompts taken section or try another prompt')
             setGenre_String('')
@@ -76,14 +78,14 @@ const PromptForm = ({id, title, prose, genre, thumbLink, fullLink, text, clearPr
     }
 
     return(
-        <>
+        <>  
             <Container className="submit-btn" component="main">
                 <Paper className={classes.paper} elevation={4}>                      
                     <form onSubmit={handleSubmit} className={classes.form}>
                         <Grid container spacing={2} >                      
-                            <Grid item xs={12} ><TextField value={formData.title} required variant="outlined" fullWidth name="title" label="Title" onChange={handleChange} /></Grid>
-                            <Grid item xs={12} ><TextField value={formData.prose} required multiline rows={15} variant="outlined" fullWidth name="prose" label="Story" onChange={handleChange} /></Grid>           
-                            <Grid item xs={12} ><TextField value={genre_string} variant="outlined" fullWidth name="genre" label="Genres(use #)" onChange={handleChange} /></Grid>
+                            <Grid item xs={12} ><TextField onClick={()=> localStorage.getItem('isAuth') === 'false' ? setIsShowPleaseLogin(true) : null} value={formData.title} required variant="outlined" fullWidth name="title" label="Title" onChange={handleChange} /></Grid>
+                            <Grid item xs={12} ><TextField onClick={()=> localStorage.getItem('isAuth') === 'false' ? setIsShowPleaseLogin(true) : null} value={formData.prose} required multiline rows={15} variant="outlined" fullWidth name="prose" label="Story" onChange={handleChange} /></Grid>           
+                            <Grid item xs={12} ><TextField onClick={()=> localStorage.getItem('isAuth') === 'false' ? setIsShowPleaseLogin(true) : null} value={genre_string} variant="outlined" fullWidth name="genre" label="Genres(use #)" onChange={handleChange} /></Grid>
                         </Grid>
                         
                         <div className="submit-and-error">

@@ -14,7 +14,7 @@ const ProseCard = ({ id, title, prose, callback }) => {
     const classes = useStyles()    
 
     const deleteProse = () => {
-        axios.delete(`${url}/${id}/prose/deleteprose`)
+        axios.delete(`${url}/${id}/prose/deleteprose`, {withCredentials: true})
         .then((res) => {
             callback(id)
             console.log('Suxccessfully deleted')

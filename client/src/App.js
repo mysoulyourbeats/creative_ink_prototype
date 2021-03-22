@@ -11,6 +11,8 @@ import APIcalls from './components/Prompts/GetPrompt/APIcalls'
 import UsedPrompts from './components/Prompts/UsedPrompts/UsedPrompts'
 import Weave from './components/Weave/Weave'
 import Hall from './components/Hall/Hall'
+import Auth from './components/Auth/Auth'
+import FullPost from './components/FullPost/FullPost'
 
 
 const App = () => {
@@ -20,16 +22,18 @@ const App = () => {
             <Router>   
                 <StateProvider>
                     <NavBar />
-                    <Route path="/signup" exact component={Signup} /> 
+                    <Route path="/auth" exact component={Auth} />    
+                    <Route path="/signup" exact component={Signup} />                 
+                    
+                    <Route path="/" exact component={Home} />
+                    <Route path="/drafts" exact component={Drafts} />
+                    <Route path="/postprose" exact component={PostProse} />
+                    <Route path="/prompts" exact component={APIcalls} />
+                    <Route path="/usedprompts" exact component={UsedPrompts} />                 
+                    <Route path="/weave" exact component={Weave} />                 
+                    <Route path="/hall" exact component={Hall} />           
+                    <Route path="/fullpost" exact component={FullPost} />           
                 </StateProvider>
-                
-                <Route path="/" exact component={Home} />
-                <Route path="/drafts" exact component={Drafts} />
-                <Route path="/postprose" exact component={PostProse} />
-                <Route path="/prompts" exact component={APIcalls} />
-                <Route path="/usedprompts" exact component={UsedPrompts} />                 
-                <Route path="/weave" exact component={Weave} />                 
-                <Route path="/hall" exact component={Hall} />                 
             </Router>
         </>
     )

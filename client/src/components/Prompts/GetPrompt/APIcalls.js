@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import APIcard from './APIcard'
 import PromptForm from './PromptForm'
-
+import Auth from '../../Auth/Auth'
 import './prompts.css'
 
 const reddit = 'https://www.reddit.com/r/WritingPrompts/random.json'
@@ -23,6 +23,7 @@ const Prompts = (props) => {
     const [fullLink, setFullLink] = useState('')
     const [token, setToken] = useState('')
     const [needToken, setNeedToken] = useState(false)
+    const [isShowPleaseLogin, setIsShowPleaseLogin] = useState(false)
 
     useEffect(() => {
         if(props?.location?.state){
@@ -123,6 +124,7 @@ const Prompts = (props) => {
 
     return(
         <div  className="boss">
+           { isShowPleaseLogin? <Auth setIsShowPleaseLogin={setIsShowPleaseLogin}/> : null}
             <div className="prompt-page-title-section">
                 <h1 className="prompt-page-title">{props.location.state? 'Update piece' : 'Prompt Generator'}</h1>
                 {props.location.state? null : <p>Pick a writing prompt or a picture prompt</p> }
@@ -149,6 +151,7 @@ const Prompts = (props) => {
                                                                                  prose={props?.location?.state?.prose} genre={props?.location?.state?.genre}
                                                                                  thumbLink={thumbLink} fullLink={fullLink} text={text} 
                                                                                  clearPromptGeneratedTextOrLinkCallback={clearPromptGeneratedTextOrLinkCallback} 
+                                                                                 setIsShowPleaseLogin={setIsShowPleaseLogin}
                                                                      />
                             </div>
                     </div>         

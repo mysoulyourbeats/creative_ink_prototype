@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
             next()
         } else {
             const token = req.cookies['token']
-            console.log('token is', token)
+            // console.log('token is', token)
 
             const decoded = jwt.verify(token, 'secretkey') 
             req.userId = decoded.id    

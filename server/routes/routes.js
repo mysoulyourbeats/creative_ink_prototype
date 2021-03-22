@@ -6,8 +6,8 @@ import auth from '../middleware/auth.js'
 
 const router = express.Router()
 
-router.get('/', auth, (req, res) => {
-    res.send(req.body)
+router.get('/', (req, res) => {
+    res.send('hello world!')
 })
 
 // ================
@@ -20,9 +20,9 @@ router.get('/clearcookies', clearcookies)
 // ================
 //      CRUD
 // ================
-router.post('/postprose', postprose)
-router.patch('/:id/updateprose', updateprose)
-router.delete('/:id/:type/deleteprose', deleteprose)
+router.post('/postprose', auth, postprose)
+router.patch('/:postId/updateprose', auth, updateprose)
+router.delete('/:postId/:type/deleteprose', auth, deleteprose)
 router.get('/:id?/:type/getprose', auth, getprose)
 router.patch('/:id/likestory', auth, likestory)
 

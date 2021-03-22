@@ -9,7 +9,7 @@ import { Context } from '../Context'
 import axios from 'axios'
 const url = "http://localhost:5000"
 
-const Signup = () => {
+const Signup = ({ setIsShowPleaseLogin, redirectUrl }) => {
 
     const classes = useStyles()    
     const[showPassword, setShowPassword] = useState(false)
@@ -35,7 +35,11 @@ const Signup = () => {
                              localStorage.setItem('userName', res.data.name)   
                              localStorage.setItem('userId', res.data.id)         
                              setIsAuth(true)
-                             history.push('/')                                                                                   
+                             if(setIsShowPleaseLogin)
+                                {   setIsShowPleaseLogin(false)
+                                }                                                                                
+                             else
+                                {history.push('/')}
                     })
                 .catch((error) => { 
                                             // console.log('error is', error.response)

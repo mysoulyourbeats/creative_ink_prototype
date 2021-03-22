@@ -1,3 +1,7 @@
+.full-post-view{
+}
+
+
 .oopsie{
     font-size: 3.5em;
     margin: 0 auto;
@@ -25,7 +29,7 @@
     width: 100%;
     height: 100%;
     margin-bottom: 5em;
-    margin-top: 3em;
+    padding-top: 3em;
 }
 
 .used-prompts-wrapper{
@@ -97,7 +101,7 @@
     overflow: hidden;
     height: 1.5em;
     margin-bottom: 0.85em;
-    color:rgb(224, 157, 113);
+    color:rgb(30, 154, 131);
 }
 
 /* ============================
@@ -135,6 +139,12 @@
     margin-left: 2.2em;
 }
 
+.writer{
+    width: 150px;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 /* ============================
            MEDIA QUERIES
@@ -160,5 +170,31 @@
     .prompt-like-counter{
         margin-left: 0.75em;
         margin-right: 8.5em;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .used-prompts-wrapper .MuiPaper-rounded {
+        width: 17em;
+    }
+    .used-thumbnail{
+        width: 17em;
+    }
+
+    .used-prompts-wrapper h3{
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .used-prompts-wrapper .MuiPaper-rounded {
+        width: 15em;
+    }
+    .used-thumbnail{
+        width: 15em;
+    }
+
+    .used-prompts-wrapper h3{
+        width: 180px;
     }
 }

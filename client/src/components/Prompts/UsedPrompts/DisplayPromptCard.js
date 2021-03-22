@@ -12,6 +12,7 @@ import edit from '../../../Images/edit.png'
 import trash from '../../../Images/delete.png'
 import useStyles from '../../styles.js'
 
+import Auth from '../../Auth/Auth.js'
 
 const url = "http://localhost:5000"
 
@@ -19,13 +20,14 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
     const classes = useStyles()   
     const [likeCount, setLikeCount] = useState(like)
     const [canDislike, setCanDislike] = useState(isLiked)
+    const [isShowPleaseLogin, setIsShowPleaseLogin] = useState(false)
 
     const genre_string = (genre[0] === '' ? '' : '#') + (genre.join(' #'))
     
     const prompt = text.split(' ').slice(0,5).join(' ')
     const deletePrompt = () => {
 
-        axios.delete(`${url}/${id}/prompt/deleteprose`)
+        axios.delete(`${url}/${id}/prompt/deleteprose`, {withCredentials: true})
         .then((res) => {
             callback(id)
             console.log('Suxccessfully deleted')
@@ -34,8 +36,8 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
     }
 
     const likeIncrDecr = () => {
-        axios.patch(`${url}/${id}/likestory`, {}, {withCredentials: true})
-        .then(res => {
+
+        if(localStorage.getItem('isAuth') === 'true'){
             if(canDislike){
                 setLikeCount(prev => prev - 1)
                 setCanDislike(false)
@@ -43,30 +45,49 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
                 setLikeCount(prev => prev + 1)
                 setCanDislike(true)
             }
+        } 
+
+        axios.patch(`${url}/${id}/likestory`, {}, {withCredentials: true})
+        .then(res => {            
             console.log(res.data)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            setIsShowPleaseLogin(true)
+            console.log(error)
+        })
     }
 
     return(
         <>
+          {isShowPleaseLogin ? <Auth setIsShowPleaseLogin={setIsShowPleaseLogin} redirectUrl={'hall'}/> : null }
           <div className="used-prompts-wrapper">
                 <Container className={classes.paper}>
                     <Paper>
 
-                        {   text !== '' ? <h2 className="used-written-prompt">{prompt}</h2>
-                                     :  <ProgressiveImage                  
-                                            src={fullLink}
-                                            placeholder={thumbLink}
-                                        >
-                                         {(src, loading) => <img className={ loading ? "used-thumbnail blur" : "used-thumbnail" } src={src} alt="idgafaalt" />}
-                                        </ProgressiveImage>
-                        }
+                        <Link to = {{
+                                            pathname: "/fullpost",
+                                            state: { 
+                                                title, prose,
+                                                id, genre, like,
+                                                thumbLink, fullLink, 
+                                                text,
+                                                writer,
+                                                isLiked                         
+                                            }}}>
+                            {   text !== '' ? <h2 className="used-written-prompt">{prompt}</h2>
+                                         :  <ProgressiveImage                  
+                                                src={fullLink}
+                                                placeholder={thumbLink}
+                                            >
+                                             {(src, loading) => <img className={ loading ? "used-thumbnail blur" : "used-thumbnail" } src={src} alt="idgafaalt" />}
+                                            </ProgressiveImage>
+                            }
+                        </Link>
 
                         <div className="text-meta-data">
                             <div><h3>{title}</h3></div>
                             <div className="used-story">{prose}</div>
-                            <div className="used-genres">{genre_string }</div>
+                            <div className="used-genres">{genre_string}</div>
                         
 
                             <div className="love-and-edit">

@@ -13,6 +13,7 @@ const url = "http://localhost:5000"
 const Drafts = () => {
     const[proseData, setProseData] = useState([])
     const[id, setId] = useState('')
+    const [isNoDraftTaken, setIsNoDraftTaken] = useState(false)
 
     const callback = (id) => {
             const index = proseData.findIndex((val) => val.id === id)
@@ -26,9 +27,7 @@ const Drafts = () => {
         }
 
     useEffect(() => {
-        const id = localStorage.getItem('userId')
-
-        axios.get(`${url}/${id}/prose/getprose`)
+        axios.get(`${url}/prose/getprose`, {withCredentials: true})
         .then((res) => {
             res.data.result.map((val) => (
 
@@ -37,7 +36,7 @@ const Drafts = () => {
             
             // console.log('Proses obtained')             
         })
-        .catch((error) => console.log(error))
+        .catch((error) => {console.log(error); setIsNoDraftTaken(true)})
     }, [])
 
 
@@ -46,7 +45,7 @@ const Drafts = () => {
              <Link to="/postprose"><img src={plus} alt="idgafaalt" className="create-draft-btn" /></Link>
     
                 {   
-                    proseData.length === 0 ? 
+                    isNoDraftTaken ? 
                     <div className="oopsie">
                         <div><h2>No drafts<br/>written yet!</h2></div>
                         <Link to="/postprose"><Button size="large" variant="outlined" className="oopsie-btn">Take a prompt</Button></Link>
