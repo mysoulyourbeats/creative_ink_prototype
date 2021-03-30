@@ -22,7 +22,7 @@ const Home = () => {
            <div className="para-styler weave">
                <h2>Weave a story together</h2>
                <p>Let everyone forge the path of the story and add their own flavours.<br/> Write together, turn by turn.</p>
-               <Link to="/weave"><Button size="large" variant="outlined">Create together</Button></Link>
+               <Link to="/join"><Button size="large" variant="outlined">Create together</Button></Link>
            </div>
 
            <div className="para-styler drafts">

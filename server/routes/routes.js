@@ -23,8 +23,9 @@ router.get('/clearcookies', clearcookies)
 router.post('/postprose', auth, postprose)
 router.patch('/:postId/updateprose', auth, updateprose)
 router.delete('/:postId/:type/deleteprose', auth, deleteprose)
-router.get('/:id?/:type/getprose', auth, getprose)
-router.patch('/:id/likestory', auth, likestory)
+router.get('/:type/getprose', auth, getprose)
+router.get('/:isAuth/:type/gethallprose', auth, getprose)
+router.patch('/:postId/likestory', auth, likestory)
 
 
 export default router

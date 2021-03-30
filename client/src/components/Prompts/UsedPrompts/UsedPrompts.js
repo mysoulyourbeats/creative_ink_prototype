@@ -25,8 +25,8 @@ const UsedPrompts = () => {
         }
     
     useEffect(() => {
-        const id = localStorage.getItem('userId')
-        axios.get(`http://localhost:5000/${id}/prompt/getprose`, {withCredentials: true})
+        
+        axios.get(`http://localhost:5000/prompt/getprose`, {withCredentials: true})
         .then(res => {
             console.log(res.data.result)  
 

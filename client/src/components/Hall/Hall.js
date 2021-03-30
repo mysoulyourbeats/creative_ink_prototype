@@ -9,7 +9,7 @@ const Hall = () => {
     const [promptData, setPromptData] = useState([])
     
     useEffect(() => {
-        axios.get(`${url}/${localStorage.getItem('userId')}/hall/getprose`, {withCredentials: true})
+        axios.get(`${url}/${localStorage.getItem('isAuth')}/hall/gethallprose`, {withCredentials: true})
         .then(res => {
             console.log(res)
             res.data.result.map((val) => (

@@ -10,6 +10,7 @@ import PostProse from './components/PostProse/PostProse'
 import APIcalls from './components/Prompts/GetPrompt/APIcalls'
 import UsedPrompts from './components/Prompts/UsedPrompts/UsedPrompts'
 import Weave from './components/Weave/Weave'
+import Join from './components/Weave/Join'
 import Hall from './components/Hall/Hall'
 import Auth from './components/Auth/Auth'
 import FullPost from './components/FullPost/FullPost'
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/postprose" exact component={PostProse} />
                     <Route path="/prompts" exact component={APIcalls} />
                     <Route path="/usedprompts" exact component={UsedPrompts} />                 
+                    <Route path="/join" exact component={Join} />                 
                     <Route path="/weave" exact component={Weave} />                 
                     <Route path="/hall" exact component={Hall} />           
                     <Route path="/fullpost" exact component={FullPost} />           

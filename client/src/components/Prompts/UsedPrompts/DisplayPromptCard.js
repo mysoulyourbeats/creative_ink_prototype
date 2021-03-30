@@ -71,8 +71,7 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
                                                 id, genre, like,
                                                 thumbLink, fullLink, 
                                                 text,
-                                                writer,
-                                                isLiked                         
+                                                writer                                                                         
                                             }}}>
                             {   text !== '' ? <h2 className="used-written-prompt">{prompt}</h2>
                                          :  <ProgressiveImage                  

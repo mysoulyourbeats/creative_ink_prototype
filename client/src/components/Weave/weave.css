@@ -1,0 +1,12 @@
+.weave-form{
+    margin-top: 5em;
+    word-wrap: break-word;
+}
+
+.weave-form .MuiPaper-root{
+    padding: 2em;
+}
+
+.weave-story{
+    height: 50vh;
+}

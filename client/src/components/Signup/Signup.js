@@ -15,7 +15,7 @@ const Signup = ({ setIsShowPleaseLogin, redirectUrl }) => {
     const[showPassword, setShowPassword] = useState(false)
     const[isSignup, setIsSignup] = useState(true)
     
-    const initialSignupState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+    const initialSignupState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
     const initialSigninState = { email: '', password: ''}
     const [formData, setFormData] = useState(isSignup ? initialSignupState : initialSigninState)
     const [failedAuth, setFailedAuth] = useState('')
@@ -33,7 +33,7 @@ const Signup = ({ setIsShowPleaseLogin, redirectUrl }) => {
                 .then((res) => {                           
                              localStorage.setItem('isAuth', true)
                              localStorage.setItem('userName', res.data.name)   
-                             localStorage.setItem('userId', res.data.id)         
+                            //  localStorage.setItem('userId', res.data.id)         
                              setIsAuth(true)
                              if(setIsShowPleaseLogin)
                                 {   setIsShowPleaseLogin(false)
