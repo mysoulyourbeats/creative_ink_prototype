@@ -179,12 +179,12 @@
                                             }
                                             
                                             textarea::-webkit-scrollbar{
-                                                width: 5px;
+                                                width: 5px !important;
                                             }
                                             
                                             textarea::-webkit-scrollbar-thumb{
-                                                background: #cacacad4;
-                                                border-radius: 500px;
+                                                background: #cacacad4 !important;
+                                                border-radius: 500px !important;
                                             }
 .please-choose-prompt {
     color: rgb(253, 84, 84);

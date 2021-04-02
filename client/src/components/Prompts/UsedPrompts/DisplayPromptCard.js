@@ -86,9 +86,7 @@ const DisplayPromptCard = ({ title, prose, id, genre, like, thumbLink, fullLink,
                         <div className="text-meta-data">
                             <div><h3>{title}</h3></div>
                             <div className="used-story">{prose}</div>
-                            <div className="used-genres">{genre_string}</div>
-                        
-
+                            <div className="used-genres">{genre_string}</div>                       
                             <div className="love-and-edit">
 
                                 {   canDislike ? <img src={heart} alt="idgafaalt" className="heart" onClick={likeIncrDecr} />                        

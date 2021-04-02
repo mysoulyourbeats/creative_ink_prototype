@@ -3,20 +3,23 @@
     flex-direction: row;
     flex-wrap: wrap; 
     justify-content: flex-start;
-    width: 100%;
     height: 100%;
-    padding-bottom: 5em;
+    margin-left: 7em;
+    margin-bottom: 3em;
 }
 
 .prose-card-wrapper{
-    width: 13em;
-    min-width: 13em;
+    max-width: 23em;
     padding-left: 2.5em;  
 }
 
+.prose-card-wrapper a{
+    color: black;
+}
+
 .prose-card-wrapper .MuiPaper-rounded{
-    height: 15em;
-    padding: 1.5em;
+    height: 17em;
+    padding: 3em;
     border-radius: 15px !important;
 }
 
@@ -30,12 +33,17 @@
     text-overflow: ellipsis !important;
     white-space: nowrap;
     overflow: hidden;
+    margin-bottom: 2em;
 }
 
 .draft-prose{
-    height: 10em;
+    width: 100%;
     overflow-y: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical; 
     margin-bottom: 0.5em;
+    line-height: 1.5em;
 }
 
 /* ============================
@@ -44,8 +52,7 @@
 */
 
 .edit-options-div {
-    /* display: flex;
-    flex-direction: row; */
+    margin-top: 2em;
     height: 1em;
 }
 
@@ -61,8 +68,8 @@
 
 .create-draft-btn{
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 10px;
+    right: 30px;
     width: 4.5em;
 }
 
@@ -76,6 +83,7 @@
     .drafts-container{
         width: auto;
         flex-direction: column;
+        margin-left: 10em;
     }
 
     .prose-card-wrapper{
@@ -88,4 +96,28 @@
         right: 8px;
     }
 
+    .prose-card-wrapper{
+        margin-left: 0.6em;
+        margin-right: 0.6em;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .drafts-container{
+        margin: 4em;
+    }
+}
+
+
+@media screen and (max-width:450px) {
+    .drafts-container{
+        margin: 0 auto !important;
+        margin-bottom: 3em !important;
+    }
+
+    .create-draft-btn{
+        bottom: 5px;
+        right: 4px;
+        width: 3.4em;
+    }
 }

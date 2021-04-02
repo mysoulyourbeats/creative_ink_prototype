@@ -1,10 +1,11 @@
 body{
     color: rgb(230, 230, 230);
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', Georgia, sans-serif;
+    /* -webkit-transform: translate3d(0,0,0); */
 }
 
 .first-page-wrapper .MuiButton-root {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', Georgia !important;
 }
 
 .welcome{
@@ -15,8 +16,7 @@ body{
 
 .title {
     padding: 0;
-    font-family: 'Cherry Swash';
-    font-display: optional;
+    font-family: 'Cherry Swash', Georgia;
     font-size: 8em;    
     margin: 0 auto;
     font-weight: 400;
@@ -119,7 +119,7 @@ body{
         font-size: 0.80em;
     }
 
-    .MuiButton-outlinedSizeLarge {
+    .first-page-wrapper .MuiButton-outlinedSizeLarge {
         font-size: 0.82em !important;
     }
 }

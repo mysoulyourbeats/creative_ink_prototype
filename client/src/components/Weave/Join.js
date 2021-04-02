@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Paper, Button, TextField } from '@material-ui/core'
 
@@ -10,12 +10,16 @@ const Join = () => {
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
     const [isRoomGenerated, setIsRoomGenerated] = useState(false)
+    
+    useEffect(() => {
+        document.getElementsByClassName('navbar')[0].scrollIntoView()
+    }, [])
 
     return(
         <div className="join-wrapper">
             <div className="oopsie">
                             <div><h2>Weave a story, <br/>together.</h2></div>
-                            <p>You can either create your own room to write with others, or join an existing one. </p>
+                            <p>Either create your own room to write with others, or join an existing one. </p>
                             <Button size="large" variant="outlined" className="oopsie-btn code-btn" onClick={() => {setIsRoomGenerated(true); document.getElementById('join-form').scrollIntoView({behavior: 'smooth'}); setRoom(Math.random().toString(36).slice(-7));} }>Create Room</Button>
                             <Button onClick={() => {document.getElementById('join-form').scrollIntoView({behavior: "smooth"}); setIsRoomGenerated(false)} } size="large" variant="outlined" className="oopsie-btn" >Join with Code</Button>                            
             </div>

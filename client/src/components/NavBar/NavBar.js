@@ -65,9 +65,10 @@ const NavBar = () => {
                         <Link to="/hall"><div className="nav-options-large">Hall</div></Link>
                         { (isAuth)? <Link to="/drafts"><div className="nav-options-large">Drafts</div></Link> : null }
                         <Link to="/join"><div className="nav-options-large">Weave</div></Link>
+                        <Link to="/weavehall"><div className="nav-options-large">Collab Pieces</div></Link>
                         { (!isAuth)? <Link to="/signup"><div className="nav-options-large">Sign Up</div> </Link> : <Link to="/" onClick={clickHandler}><div className="nav-options-large">Log Out</div></Link> }
                 
-                <img src={ham} alt="lick mah balls" className="hamburger" onClick={toggleSmallNavOptions}></img>                      
+                <img src={ham} alt="idgafaa" className="hamburger" onClick={toggleSmallNavOptions}></img>                      
                 </div>
                 
             </nav>
@@ -76,11 +77,11 @@ const NavBar = () => {
                 
                     <div className="xxx">
                         <div className="nav-options-small">
-                            {/* <img alt="idontgiveafuckaboutalt" src={x} onClick={toggleSmallNavOptions} /> */}
                             <Link to="/prompts" onClick={toggleSmallNavOptions}><div className="top-option">Prompts</div></Link>
                             <Link to="/hall"><div onClick={toggleSmallNavOptions}>Hall</div></Link>
                             { (isAuth)? <Link to="/drafts" onClick={toggleSmallNavOptions}><div>Drafts</div></Link> : null }
-                            <Link to="/weave" onClick={toggleSmallNavOptions}><div>Weave</div></Link>
+                            <Link to="/join" onClick={toggleSmallNavOptions}><div>Weave</div></Link>
+                            <Link to="/weavehall" onClick={toggleSmallNavOptions}><div>Collab Pieces</div></Link>
                             { (!isAuth)? <Link to="/signup" onClick={toggleSmallNavOptions}><div>Sign Up</div> </Link> : <Link to="/" onClick={() => {clickHandler(); toggleSmallNavOptions()}}><div>Log Out</div></Link> }
                         </div>
                     </div> 

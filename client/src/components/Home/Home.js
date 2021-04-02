@@ -10,7 +10,7 @@ const Home = () => {
             <div className="welcome">
                <p className="title">Creative.Inc</p>
                <p className="specs">Write | Share | Collaborate</p>
-               <Link to="/prompts"><Button size="large" variant="outlined">Start Creating</Button></Link>
+               <Link to="/prompts"><Button size="large" variant="outlined">Start Writing</Button></Link>
             </div>
             
             <div className="para-styler prompt">

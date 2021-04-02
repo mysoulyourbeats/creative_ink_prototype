@@ -13,7 +13,7 @@
 
 #join-form .MuiPaper-root{
     padding: 1em 5em 1em 5em;
-    background-color: rgba(255, 255, 255, 0.32);
+    background-color: rgba(255, 255, 255, 0.537);
 }
 
 #join-form input{
@@ -36,4 +36,11 @@
 #join-form p{
     max-width: 12rem;
     margin: 2em auto;
+}
+
+@media screen and (max-width: 450px){
+    #join-form .MuiPaper-root{
+        padding: 1em 3.3em 1em 3.3em;
+        background-color: rgba(255, 255, 255, 0.762);
+    }
 }

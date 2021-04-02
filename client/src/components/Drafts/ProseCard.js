@@ -26,8 +26,15 @@ const ProseCard = ({ id, title, prose, callback }) => {
         <div className="prose-card-wrapper">
            <Container>
                 <Paper className={classes.paper}>
-                    <div className="draft-title"><h3>{title}</h3></div>
-                    <div className="draft-prose">{prose}</div>
+                    <Link to = {{      pathname: "/fulldraft",
+                                            state: { 
+                                                title, prose                                                                       
+                                            }
+                                }}
+                    >
+                        <div className="draft-title"><h3>{title}</h3></div>
+                        <div className="draft-prose">{prose}</div>
+                    </Link>
                     <div className="edit-options-div">
                         <Link to = {{
                                 pathname: "/postprose",

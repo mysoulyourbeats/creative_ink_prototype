@@ -36,27 +36,26 @@ const Drafts = () => {
             
             // console.log('Proses obtained')             
         })
-        .catch((error) => {console.log(error); setIsNoDraftTaken(true)})
+        .catch((error) => {setIsNoDraftTaken(true); console.log(error) })
     }, [])
 
 
     return(
             <div className="drafts-container">  
-             <Link to="/postprose"><img src={plus} alt="idgafaalt" className="create-draft-btn" /></Link>
     
                 {   
                     isNoDraftTaken ? 
                     <div className="oopsie">
                         <div><h2>No drafts<br/>written yet!</h2></div>
-                        <Link to="/postprose"><Button size="large" variant="outlined" className="oopsie-btn">Take a prompt</Button></Link>
+                        <Link to="/postprose"><Button size="large" variant="outlined" className="oopsie-btn">Write a draft</Button></Link>
                     </div>
-                     :     
-                    proseData.map((val) => (   id!==val.id ?
+                     :  null }  
+                    {proseData.map((val) => (   id!==val.id ?
                                                 <ProseCard key={val.id} id={val.id} title={val.title} prose={val.prose} callback={callback}/>
                                                 : null
                                             ) 
-                                 ) 
-                }
+                                 ) }
+              <Link to="/postprose"><img src={plus} alt="idgafaalt" className="create-draft-btn" /></Link>
             </div>
 
     )

@@ -2,6 +2,7 @@ import express from 'express'
 import { signup, signin, clearcookies } from '../controller/register.js'
 import { postprose, getprose, updateprose, deleteprose } from '../controller/crud.js'
 import likestory  from '../controller/like.js'
+import { postWeave, getWeave } from '../controller/weave.js'
 import auth from '../middleware/auth.js'
 
 const router = express.Router()
@@ -27,5 +28,11 @@ router.get('/:type/getprose', auth, getprose)
 router.get('/:isAuth/:type/gethallprose', auth, getprose)
 router.patch('/:postId/likestory', auth, likestory)
 
+
+// ================
+//      WEAVE
+// ================
+router.get('/getWeave', getWeave)
+router.post('/postWeave', postWeave)
 
 export default router

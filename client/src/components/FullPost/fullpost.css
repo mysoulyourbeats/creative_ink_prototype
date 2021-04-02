@@ -79,4 +79,8 @@
         font-size: 0.9rem;
     }
 
+    .full-post-img img {
+        height: 18em;
+    }
+
 }
